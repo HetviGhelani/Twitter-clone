@@ -1,0 +1,313 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply transition-colors duration-200;
+  }
+
+  body {
+    @apply bg-gray-50 dark:bg-twitter-darker text-gray-900 dark:text-gray-100;
+    margin: 0;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Roboto",
+      "Oxygen",
+      "Ubuntu",
+      "Cantarell",
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-y: scroll;
+  }
+
+  code {
+    font-family:
+      source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-twitter-dark;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 dark:bg-gray-600 rounded;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500 dark:bg-gray-500;
+  }
+
+  /* Focus outline */
+  :focus {
+    @apply outline-none ring-2 ring-twitter-blue ring-opacity-50;
+  }
+
+  button:focus-visible {
+    outline: 2px solid #1DA1F2;
+    outline-offset: 2px;
+  }
+
+  /* Selection color */
+  ::selection {
+    @apply bg-twitter-blue text-white;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply bg-twitter-blue text-white font-bold py-2 px-4 rounded-full 
+           hover:bg-blue-600 dark:hover:bg-blue-700 
+           transition duration-200 
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-outline {
+    @apply border border-twitter-blue text-twitter-blue font-bold py-2 px-4 rounded-full 
+           hover:bg-blue-50 dark:hover:bg-twitter-dark 
+           transition duration-200;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 text-white font-bold py-2 px-4 rounded-full 
+           hover:bg-red-600 dark:hover:bg-red-700 
+           transition duration-200;
+  }
+
+  /* Cards */
+  .tweet-card {
+    @apply border-b border-gray-200 dark:border-gray-800 p-4 
+           hover:bg-gray-50 dark:hover:bg-twitter-dark 
+           transition cursor-pointer;
+  }
+
+  /* Sidebar Icons */
+  .sidebar-icon {
+    @apply flex items-center px-3 lg:px-4 py-2 lg:py-3 rounded-full 
+           hover:bg-gray-100 dark:hover:bg-twitter-dark 
+           transition w-fit text-gray-700 dark:text-gray-300;
+  }
+
+  /* For mobile, center the icons */
+  @media (max-width: 1024px) {
+    .sidebar-icon {
+      @apply justify-center w-12 mx-auto;
+    }
+  }
+
+  /* Inputs */
+  .input-primary {
+    @apply w-full px-4 py-2 border border-gray-300 dark:border-gray-700 
+           rounded-lg focus:outline-none focus:ring-2 focus:ring-twitter-blue 
+           bg-white dark:bg-twitter-dark text-gray-900 dark:text-gray-100
+           transition duration-200;
+  }
+
+  /* Modals */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 dark:bg-opacity-70 
+           flex items-center justify-center z-50;
+  }
+
+  .modal-content {
+    @apply bg-white dark:bg-twitter-darker rounded-2xl w-full max-w-lg mx-4
+           shadow-xl dark:shadow-2xl;
+  }
+
+  /* Dropdown menus */
+  .dropdown-menu {
+    @apply absolute right-0 mt-2 w-48 bg-white dark:bg-twitter-dark 
+           rounded-lg shadow-lg dark:shadow-2xl border border-gray-200 
+           dark:border-gray-700 z-20;
+  }
+
+  .dropdown-item {
+    @apply w-full text-left px-4 py-3 hover:bg-gray-50 dark:hover:bg-twitter-darker 
+           flex items-center space-x-2 text-gray-700 dark:text-gray-300 
+           first:rounded-t-lg last:rounded-b-lg transition;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    @apply animate-spin rounded-full h-8 w-8 border-b-2 border-twitter-blue;
+  }
+
+  /* Badges */
+  .badge {
+    @apply text-xs px-2 py-1 rounded-full font-medium;
+  }
+
+  .badge-primary {
+    @apply bg-twitter-blue bg-opacity-10 text-twitter-blue;
+  }
+
+  .badge-success {
+    @apply bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300;
+  }
+
+  .badge-error {
+    @apply bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300;
+  }
+
+  /* Typography */
+  .heading-1 {
+    @apply text-2xl font-bold text-gray-900 dark:text-gray-100;
+  }
+
+  .heading-2 {
+    @apply text-xl font-bold text-gray-900 dark:text-gray-100;
+  }
+
+  .text-muted {
+    @apply text-gray-500 dark:text-gray-400;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-in-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Gradient backgrounds */
+  .gradient-primary {
+    @apply bg-gradient-to-r from-twitter-blue to-purple-600;
+  }
+
+  .gradient-success {
+    @apply bg-gradient-to-r from-green-400 to-green-600;
+  }
+
+  .gradient-error {
+    @apply bg-gradient-to-r from-red-400 to-red-600;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white bg-opacity-20 dark:bg-black dark:bg-opacity-20 
+           backdrop-filter backdrop-blur-lg;
+  }
+
+  /* Custom shadows */
+  .shadow-soft {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .shadow-soft {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .shadow-hard {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .dark .shadow-hard {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Fix for fixed positioning */
+  .fixed {
+    will-change: transform;
+  }
+
+  /* Main layout improvements */
+  .max-w-7xl {
+    max-width: 1280px;
+  }
+}
+
+/* Dark mode specific overrides */
+.dark {
+  color-scheme: dark;
+}
+
+/* Twitter blue color utilities */
+.text-twitter-blue {
+  color: #1da1f2;
+}
+
+.bg-twitter-blue {
+  background-color: #1da1f2;
+}
+
+.border-twitter-blue {
+  border-color: #1da1f2;
+}
+
+/* Disable transitions for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+  }
+}
